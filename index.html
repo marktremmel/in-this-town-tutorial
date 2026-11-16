@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>In This Town: Handbook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --ink: #191923; --paper: #ffffff; --soft: #f4f3fb;
+    --yellow: #ffd250; --pink: #ff5faa; --cyan: #50dcff; --lime: #96f05a; --violet: #7b5cff;
+  }
+  @page { size: A4; margin: 14mm 14mm 16mm 14mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9e7f3; color: var(--ink); font: 15px/1.55 "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+  .page { max-width: 860px; margin: 0 auto; background: var(--paper); padding: 34px 44px 50px; }
+  h1, h2, h3 { font-family: "Fredoka", "Avenir Next Rounded", "Arial Rounded MT Bold", "Avenir Next", sans-serif; line-height: 1.15; }
+  h1 { font-size: 46px; margin: 0 0 6px; letter-spacing: -0.5px; }
+  h2 { font-size: 30px; margin: 0 0 4px; }
+  h3 { font-size: 19px; margin: 26px 0 8px; break-after: avoid; page-break-after: avoid; }
+  p { margin: 0 0 10px; }
+  a { color: #3b2ccc; }
+  code, kbd { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; }
+  kbd { background: var(--ink); color: #fff; border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+  code { background: var(--soft); padding: 1px 5px; border-radius: 4px; }
+  pre { white-space: pre-wrap; word-break: break-word; background: var(--ink); color: #eaeaf5; border-radius: 12px; padding: 14px 16px; overflow-x: auto; font-size: 12.5px; line-height: 1.45; page-break-inside: avoid; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .c { color: #9be36b; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 14px; page-break-inside: avoid; }
+  th { text-align: left; background: var(--ink); color: #fff; padding: 7px 9px; }
+  td { padding: 7px 9px; border-bottom: 1px solid #e3e1ee; vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9fe; }
+  img { max-width: 100%; border-radius: 12px; display: block; }
+  figure { margin: 12px 0 16px; page-break-inside: avoid; }
+  figcaption { font-size: 12.5px; color: #555; margin-top: 5px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .grid2 figure, .grid3 figure { margin: 0; }
+  .grid2 img { aspect-ratio: 4/3; object-fit: cover; }
+  .grid3 img { aspect-ratio: 16/10; object-fit: cover; }
+  .keep { page-break-inside: avoid; }
+
+  /* cover */
+  .cover { background: var(--ink); color: #fff; border-radius: 22px; padding: 30px 32px 26px; margin-bottom: 26px; position: relative; overflow: hidden; }
+  .cover .tag { display: inline-block; background: var(--lime); color: var(--ink); font-weight: 800; border-radius: 99px; padding: 3px 12px; font-size: 13px; margin-bottom: 12px; }
+  .cover h1 span { color: var(--yellow); }
+  .cover p { color: #d6d5e6; font-size: 16px; }
+  .stripes { height: 10px; display: flex; margin: 16px -32px -26px; }
+  .stripes i { flex: 1; } .stripes i:nth-child(1){background:var(--yellow)} .stripes i:nth-child(2){background:var(--pink)} .stripes i:nth-child(3){background:var(--cyan)} .stripes i:nth-child(4){background:var(--lime)}
+
+  /* lesson header */
+  .lesson { page-break-before: always; padding-top: 6px; }
+  .lesson-head { display: flex; align-items: center; gap: 16px; margin: 4px 0 16px; }
+  .badge { flex: none; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; font: 800 30px "Fredoka", "Arial Rounded MT Bold", sans-serif; color: var(--ink); }
+  .lesson-head small { display: block; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; font-size: 12px; color: #777; }
+  .y { background: var(--yellow); } .p { background: var(--pink); } .cy { background: var(--cyan); } .l { background: var(--lime); } .v { background: var(--violet); color: #fff; }
+
+  /* lesson rhythm strip */
+  .rhythm { display: grid; grid-template-columns: 1.1fr 1fr 3fr 1fr; border-radius: 12px; overflow: hidden; margin: 0 0 18px; font-size: 13px; font-weight: 700; }
+  .rhythm div { padding: 8px 10px; }
+  .rhythm div span { display: block; font-weight: 500; font-size: 12px; opacity: .8; }
+
+  /* boxes */
+  .read { border: 3px solid var(--ink); border-radius: 16px; padding: 16px 20px 8px; margin: 0 0 18px; position: relative; background: #fffdf3; page-break-inside: avoid; }
+  .read::before { content: "READ FIRST · 5 MIN"; position: absolute; top: -12px; left: 16px; background: var(--ink); color: var(--yellow); font-size: 11.5px; font-weight: 800; letter-spacing: 1.2px; padding: 3px 10px; border-radius: 99px; }
+  .read.start::before { content: "START HERE"; }
+  .watch { background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; margin: 0 0 18px; display: flex; gap: 14px; align-items: center; page-break-inside: avoid; }
+  .watch b { color: var(--cyan); }
+  .watch .play { flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--pink); display: grid; place-items: center; font-size: 16px; }
+  .do { border-left: 6px solid var(--lime); background: #f6fdf0; padding: 12px 16px 6px; border-radius: 0 12px 12px 0; margin: 10px 0 16px; page-break-inside: avoid; }
+  .do h3 { margin-top: 0; }
+  .tip { border-left: 6px solid var(--cyan); background: #effbff; padding: 10px 16px 4px; border-radius: 0 12px 12px 0; margin: 10px 0 16px; page-break-inside: avoid; }
+  .warn { border-left: 6px solid var(--pink); background: #fff1f7; padding: 10px 16px 4px; border-radius: 0 12px 12px 0; margin: 10px 0 16px; page-break-inside: avoid; }
+  .ai { border: 3px solid var(--lime); border-radius: 16px; padding: 12px 18px 6px; margin: 10px 0 16px; background: #f4fdec; page-break-inside: avoid; }
+  .ai h3 { margin-top: 0; }
+  .ai h3::before { content: "AI "; background: var(--ink); color: var(--lime); border-radius: 6px; padding: 1px 7px; font-size: 14px; margin-right: 6px; vertical-align: 2px; }
+  .prompt { background: #fff; border: 1.5px dashed #9bc77a; border-radius: 10px; padding: 8px 12px; margin: 6px 0 10px; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12.8px; line-height: 1.5; }
+  .diary { border: 3px dashed var(--violet); border-radius: 16px; padding: 12px 18px 6px; margin: 22px 0 6px; background: #f6f3ff; page-break-inside: avoid; }
+  .diary h3 { margin-top: 0; color: var(--violet); }
+  .levels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0 16px; page-break-inside: avoid; }
+  .levels > div { border-radius: 14px; padding: 12px 14px 6px; font-size: 14px; }
+  .levels h4 { margin: 0 0 6px; font: 800 17px "Fredoka", "Arial Rounded MT Bold", sans-serif; }
+  ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 6px 0 14px; }
+  ol.steps li { counter-increment: s; position: relative; padding: 4px 0 6px 40px; }
+  ol.steps li::before { content: counter(s); position: absolute; left: 0; top: 3px; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--yellow); font-weight: 800; display: grid; place-items: center; font-size: 14px; }
+  .toc { columns: 2; gap: 24px; padding-left: 18px; }
+  .toc li { margin-bottom: 4px; }
+  .links li { margin-bottom: 5px; }
+  .kicker { font-weight: 800; color: var(--pink); text-transform: uppercase; letter-spacing: 1.4px; font-size: 12px; }
+  .ref { page-break-before: always; }
+  .ref-head { background: var(--soft); border-radius: 16px; padding: 14px 20px; margin-bottom: 14px; }
+  .faq .qa { border-bottom: 1px solid #e3e1ee; padding: 8px 0 4px; page-break-inside: avoid; }
+  .faq .q { font-weight: 800; margin-bottom: 3px; }
+  .write { border: 1.5px solid #cfcbe3; border-radius: 10px; min-height: 64px; margin: 4px 0 10px; }
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: none; }
+    a { color: #3b2ccc; text-decoration: none; }
+  }
+  @media (max-width: 640px) {
+    .page { padding: 18px; }
+    .grid2, .grid3, .levels { grid-template-columns: 1fr; }
+    .rhythm { grid-template-columns: 1fr 1fr; }
+    .toc { columns: 1; }
+  }
+
+  #bar { position: sticky; top: 0; z-index: 50; display: flex; gap: 14px; align-items: center; background: var(--ink); color: #fff; padding: 10px 18px; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+  #bar .brand { font: 800 21px "Fredoka","Arial Rounded MT Bold","Avenir Next",sans-serif; color: #fff; text-decoration: none; white-space: nowrap; }
+  #bar .brand span { color: var(--yellow); }
+  .searchwrap { position: relative; flex: 1; max-width: 520px; }
+  #q { width: 100%; font: inherit; font-size: 15px; padding: 8px 14px; border-radius: 99px; border: 0; outline: 3px solid transparent; }
+  #q:focus { outline-color: var(--lime); }
+  #results { position: absolute; left: 0; right: 0; top: 44px; background: #fff; color: var(--ink); border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.3); max-height: 70vh; overflow: auto; padding: 6px; }
+  #results a { display: block; padding: 8px 10px; border-radius: 10px; color: inherit; text-decoration: none; }
+  #results a:hover, #results a.sel { background: var(--soft); }
+  #results .sec { font-size: 11.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--pink); }
+  #results .snip { font-size: 14px; }
+  #results .qt { font-weight: 800; font-size: 14.5px; margin: 1px 0 2px; }
+  #results mark { background: var(--yellow); border-radius: 3px; padding: 0 2px; }
+  #results .none { padding: 10px; font-size: 14px; color: #666; }
+  .dl { display: flex; gap: 6px; }
+  .dl a { color: var(--ink); background: var(--lime); padding: 5px 11px; border-radius: 99px; font-weight: 700; font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .dl a:nth-child(2) { background: var(--cyan); } .dl a:nth-child(3) { background: var(--yellow); } .dl a:nth-child(4) { background: var(--pink); }
+  .flash { animation: flash 2.2s ease-out; }
+  @keyframes flash { 0%,30% { background: #fff3b0; box-shadow: 0 0 0 6px #fff3b0; } 100% { background: transparent; box-shadow: none; } }
+  .clip video { width: 100%; border-radius: 12px; display: block; background: #000; }
+  .lesson, .ref { border-top: 1px dashed #d8d5ea; margin-top: 34px; padding-top: 22px; scroll-margin-top: 70px; }
+  h3, .qa, tr, li, p { scroll-margin-top: 80px; }
+  @media (max-width: 720px) { #bar { flex-wrap: wrap; } .dl { order: 3; } .searchwrap { max-width: none; order: 2; flex-basis: 100%; } }
+</style>
+</head>
+<body id="top">
+<header id="bar">
+  <a class="brand" href="#top">In <span>This</span> Town</a>
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search: sound, two actors, animation, AI…" autocomplete="off" aria-label="Search the handbook">
+    <div id="results" hidden></div>
+  </div>
+  <nav class="dl">
+    <a href="files/In_This_Town_Handbook.pdf" download>PDF</a>
+    <a href="files/Assignment_Brief.html">Brief</a>
+    <a href="files/Story_Doc_Template.html">Story Doc</a>
+    <a href="#r9">FAQ</a>
+  </nav>
+</header>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="tag">Digital Culture · Roblox machinima</div>
+  <h1>In <span>This</span> Town</h1>
+  <p>Make your own "In this town…" story video in Roblox Studio: write the rule, build the town, move the actors, film it, cut it.</p>
+  <figure style="margin:18px 0 0"><img loading="lazy" src="img/overview.jpg" alt="The tutorial place: a path with four stations"></figure>
+  <div class="stripes"><i></i><i></i><i></i><i></i></div>
+</div>
+
+<div class="read start" style="margin-top:6px">
+  <h3 style="margin-top:4px">Start here: Lesson 1 in five steps</h3>
+  <ol class="steps">
+    <li>Log in to Roblox Studio. No account, or a forgotten password? Tell me now.</li>
+    <li>Download <code>InThisTown_Tutorial.rbxl</code> from the assignment in Classroom, open it in Studio, press <b>Play</b>, then press <kbd>F</kbd>. That's a whole "In this town" film in 20 seconds.</li>
+    <li>Read the yellow <b>Read first</b> box of Lesson 1. Only that.</li>
+    <li>Open your Story Doc from Classroom and write your rule.</li>
+    <li>Last 5 minutes: three lines in your diary.</li>
+  </ol>
+  <p>Questions? Look in <a href="#r9">Reference I: Questions</a> at the back first.</p>
+</div>
+
+<h3>How this handbook works</h3>
+<p>The project takes five lessons. Every lesson has the same rhythm:</p>
+<div class="rhythm">
+  <div class="y">Read<span>5 min, the yellow box</span></div>
+  <div class="cy">Watch<span>if there's a video</span></div>
+  <div class="l">Do<span>build, film, edit: most of the lesson</span></div>
+  <div class="p">Diary<span>last 5 min</span></div>
+</div>
+<p>You only have to read the <b>Read first</b> box at the start of each lesson. Everything else is there for when you need it. The <b>Reference</b> pages at the back have the extra detail: scripts, tables and fixes.</p>
+
+<div class="tip">
+  <p><b>Practice place:</b> open <code>InThisTown_Tutorial.rbxl</code> in Roblox Studio and press Play. Follow the arrows. It has a prop shop and eight stations: the set, movement, the camera, speech bubbles, rule effects, sound, your AI helper and a thumbnail booth. Keys while playing: <kbd>F</kbd> example film, <kbd>T</kbd> camera tour, <kbd>Y</kbd> camera moves, <kbd>L</kbd> lights, <kbd>N</kbd> time passes.</p>
+</div>
+
+<h3>What you hand in</h3>
+<table>
+  <tr><th>What</th><th>Where</th></tr>
+  <tr><td>Your <b>Story Doc</b>: rule card, story, shot list, working diary</td><td>The Google Doc attached to the assignment in Classroom</td></tr>
+  <tr><td>Your video, 30–60 seconds, .mp4</td><td>Classroom</td></tr>
+  <tr><td>Your Studio file, <code>name_inthistown_vX.rbxl</code></td><td>Classroom</td></tr>
+  <tr><td>A title, a thumbnail and a one-line caption</td><td>Classroom</td></tr>
+</table>
+
+<h3>Pick your level</h3>
+<div class="levels">
+  <div class="y"><h4>Basic</h4>One street or room. You play the character yourself and film with the free camera. 30–45 s, 5+ shots, text on screen.</div>
+  <div class="cy"><h4>Advanced</h4>Two locations, your own buildings, set lights. At least 2 animations from the Animation Editor. 45–60 s, 7+ shots, voice or dialogue.</div>
+  <div class="p"><h4>Pro</h4>Three locations, the lights change between scenes. Scripted animations and camera. 45–60 s, 8+ shots, sound. Plus a 150-word statement.</div>
+</div>
+<p>Basic is meant for grade 6, Advanced for grades 7–8, Pro for grade 9 and up. You can always go higher. If your level feels like too much, talk to me.</p>
+
+<h3>Contents</h3>
+<ol class="toc">
+  <li><a href="#l1">Lesson 1: The story</a></li>
+  <li><a href="#l2">Lesson 2: The set</a></li>
+  <li><a href="#l3">Lesson 3: Actors and movement</a></li>
+  <li><a href="#l4">Lesson 4: Camera, talk, filming</a></li>
+  <li><a href="#l5">Lesson 5: Editing and handing in</a></li>
+  <li><a href="#l6">Bonus: Premiere</a></li>
+  <li><a href="#r1">Reference A: Studio basics</a></li>
+  <li><a href="#r2">Reference B: Animation in detail</a></li>
+  <li><a href="#r3">Reference C: Pro scripts</a></li>
+  <li><a href="#r4">Reference D: Lights and bubbles</a></li>
+  <li><a href="#r5">Reference E: Fix it</a></li>
+  <li><a href="#r6">Reference F: Links</a></li>
+  <li><a href="#r7">Reference G: Your AI helper</a></li>
+  <li><a href="#r8">Reference H: Recording</a></li>
+  <li><a href="#r9">Reference I: Questions</a></li>
+</ol>
+
+<!-- LESSON 1 -->
+<section class="lesson" id="l1">
+  <div class="lesson-head"><div class="badge y">1</div><div><small>Lesson 1</small><h2>The story</h2></div></div>
+
+  <div class="read">
+    <p>Every "In this town…" video follows the same four steps:</p>
+    <table>
+      <tr><th>Step</th><th>Example</th></tr>
+      <tr><td><b>1. The rule</b>, on screen in the first 2 seconds</td><td>"In this town, if you look back after midnight, you turn to stone."</td></tr>
+      <tr><td><b>2. The consequence</b>: what happens to people who break it</td><td>The square is full of stone statues.</td></tr>
+      <tr><td><b>3. The rule-breaker</b>: who breaks it, and why</td><td>Mira hears her name called behind her.</td></tr>
+      <tr><td><b>4. The twist</b>: the ending nobody expected</td><td>She looks back… and the statues all look back too.</td></tr>
+    </table>
+    <p>A good rule can be <b>shown</b>, not just told. Test it: mute the video and hide the text. Can you still tell what happens?</p>
+    <p>"In this town, everyone is sad" doesn't work: you can't film it. "In this town, your shadow walks away at midnight" works: you can see it.</p>
+    <p>It doesn't have to be scary. Funny and weird work too: "In this town, everyone walks backwards on Tuesdays."</p>
+  </div>
+
+  <div class="watch"><div class="play">▶</div><div><b>Watch:</b> a few "In this town" examples together on the board. For each one, find the four steps. Then open the practice place, press Play and press <kbd>F</kbd>: a 20-second example film made only with what's in the practice place.</div></div>
+
+  <figure><img loading="lazy" src="img/film.jpg" alt="Example film actors on the bench"><figcaption>From the example film: "In this town, nobody sits on the bench after midnight." Find the four steps in it.</figcaption></figure>
+
+  <div class="do">
+    <h3>Do: write your story in your Story Doc</h3>
+    <p>Open the Google Doc attached to the assignment in Classroom. Fill in these three parts before you open Roblox Studio.</p>
+    <ol class="steps">
+      <li><b>Rule card.</b> The rule. What happens if you break it. Who breaks it, and why. The twist. Where it happens. How you can see the rule without words.</li>
+      <li><b>The story in 6 sentences.</b> The town. The rule. The character. They break it. The consequence. The twist.</li>
+      <li><b>Shot list.</b> One row per shot, 2–5 seconds each. What we see, where the camera is, the text or sound.</li>
+    </ol>
+  </div>
+
+  <div class="keep"><h3>Shot list example</h3>
+  <table>
+    <tr><th>#</th><th>What we see</th><th>Camera</th><th>Text or sound</th><th>Length</th></tr>
+    <tr><td>1</td><td>The town from far away</td><td>wide, slowly moving</td><td>"In this town…"</td><td>3 s</td></tr>
+    <tr><td>2</td><td>Statues in the square</td><td>medium</td><td>the rule</td><td>3 s</td></tr>
+    <tr><td>3</td><td>Mira walking home</td><td>behind her</td><td>footsteps</td><td>3 s</td></tr>
+    <tr><td>4</td><td>Someone calls her name</td><td>close-up of her face</td><td>"Mira…"</td><td>2 s</td></tr>
+    <tr><td>5</td><td>She turns around</td><td>low angle</td><td>music stops</td><td>3 s</td></tr>
+    <tr><td>6</td><td>The twist</td><td>high angle</td><td>last line</td><td>4 s</td></tr>
+  </table></div>
+  <p>Shape that works: 1 the town, 2 the rule, 3 the character, 4 the rule in action, 5 they break it, 6 the consequence, 7 the twist, 8 the final shot.</p>
+
+  <div class="tip">
+    <h3 style="margin-top:4px">Challenge: Örkény did it first</h3>
+    <p>Long before TikTok, the Hungarian writer Örkény István wrote <i>egyperces novellák</i>, one-minute stories: one strange idea, told completely straight, with a turn at the end. Sound familiar? Read one on <a href="https://mek.oszk.hu/06300/06345/06345.htm">MEK</a> and turn it into your "In this town" video. Some that work well:</p>
+    <table>
+      <tr><td><b>Választék</b></td><td>a hat shop with "three" hats</td><td><b>Visszhang</b></td><td>an echo that only asks one question</td></tr>
+      <tr><td><b>Jelenség</b></td><td>a cork sinks, and nobody knows why</td><td><b>Az autóvezető</b></td><td>tomorrow's newspaper arrives today</td></tr>
+      <tr><td><b>Hírek és álhírek</b></td><td>a newspaper that prints the more interesting news</td><td><b>Ballada a költészet hatalmáról</b></td><td>a phone booth walks out of town</td></tr>
+    </table>
+    <p>Use your own words in the video, and credit him on the end card: "Based on Örkény István: [title]". The prop shop has a phone booth, a news stand and a hat stand ready for you.</p>
+  </div>
+
+  <div class="warn"><p><b>Three rules that are not up for debate:</b> no real people from school, no classmate as the victim or the joke, no blood or gore.</p></div>
+
+  <div class="ai"><h3>Ask AI: a brainstorm partner</h3><p>Stuck on a rule? Use Gemini or ChatGPT to get ideas, then pick one and make it your own. The story you write is yours.</p><div class="prompt">Give me 10 strange rules for a town. Each rule must be something you can see on camera, without words. Just the rules, no stories.</div><div class="prompt">My rule is: "In this town, if you look back after midnight, you turn to stone." Give me 3 possible twists for the ending, and tell me which one is the most surprising and why.</div><p>Write in your diary which idea came from AI and what you changed.</p></div>
+
+  <div class="diary">
+    <h3>Diary (last 5 min)</h3>
+    <p>In your Story Doc, under <b>Working diary</b>, write three lines: <b>What I did. What went wrong or was hard. What I'll do next lesson.</b></p>
+  </div>
+</section>
+
+<!-- LESSON 2 -->
+<section class="lesson" id="l2">
+  <div class="lesson-head"><div class="badge cy">2</div><div><small>Lesson 2</small><h2>The set</h2></div></div>
+
+  <div class="read">
+    <p>You're building a <b>film set</b>, not a city. Only build what the camera will see. If the back of a house never appears on screen, it doesn't need a back.</p>
+    <p>Everything is made of <b>Parts</b>: one wall = one long, thin Part. One house = four walls and a roof. Two settings matter most:</p>
+    <p><b>Anchored ON</b> for every piece, or it falls over when you press Play. <b>Cmd + G</b> groups the pieces of a house into one Model, so it moves as one.</p>
+    <p>Look at your shot list and write down the locations you need. Then build them on the Baseplate, far apart from each other.</p>
+    <p>And make the rule visible: a midnight rule needs a clock in the shot.</p>
+  </div>
+
+  <div class="watch"><div class="play">▶</div><div><b>Watch:</b> Station 1 of the practice place, The Set. Every numbered sign explains one piece.</div></div>
+
+  <figure><img loading="lazy" src="img/set.jpg" alt="Station 1 street"><figcaption>Station 1 in the practice place: two houses, a lamp, a bench, a clock. The signs explain each piece.</figcaption></figure>
+
+  <div class="do">
+    <h3>Do: build your set</h3>
+    <ol class="steps">
+      <li>Open Roblox Studio, pick <b>Baseplate</b>. Save at once: <b>File → Save to File As…</b> → <code>name_inthistown_v1.rbxl</code>.</li>
+      <li>Turn on <b>Explorer</b> and <b>Properties</b> in the View menu if you can't see them.</li>
+      <li>Insert Parts (<b>Home → Part</b>), shape them with <b>Move</b>, <b>Scale</b>, <b>Rotate</b>, and tick <b>Anchored</b>.</li>
+      <li>Choose a <b>Material</b> (Brick, Wood, Asphalt, Neon) and a <b>Color</b> for each.</li>
+      <li>Group each building with <b>Cmd + G</b>. Copy it with <b>Cmd + D</b>.</li>
+      <li>Need a lamp, bench or tree? <b>View → Toolbox</b>. Delete any Script you find inside a model.</li>
+      <li>End of lesson: <b>File → Save to File As…</b> → <code>v2</code>.</li>
+    </ol>
+  </div>
+
+  <figure><img loading="lazy" src="img/set_close.jpg" alt="Close-up of signs and the bench"><figcaption>Up close: "Wall = one Part", "House = Model", "Seat": a character can sit here.</figcaption></figure>
+
+  <h3>Ready-made props</h3>
+  <figure><img loading="lazy" src="img/props.jpg" alt="The prop shop"><figcaption>The prop shop, left of the spawn: lamp, bench, fence, tree, mailbox, bin, phone booth, news stand, hat stand, clock, door, well.</figcaption></figure>
+  <p>Don't spend your lesson building a bench. In the practice place, open <b>ServerStorage → SetKit</b>, copy a prop (<kbd>Cmd</kbd> + <kbd>C</kbd>), and paste it into your own place (<kbd>Cmd</kbd> + <kbd>V</kbd>). Then move it into position. Spend your time on what makes your town yours.</p>
+
+  <h3>Make the rule visible: effects</h3>
+  <figure><img loading="lazy" src="img/fx.jpg" alt="Station 5: rule effects at dusk"><figcaption>Station 5: falling ash, a broken flickering lamp, a fog wall, a glowing "chosen one", a shadow that appears behind you, and fire.</figcaption></figure>
+  <p>Effects show the rule without words. In the practice place, open <b>ServerStorage → FXKit</b>. Copy an effect into your own place: particles (Ash, FogSmoke, Sparkles) and Fire go inside a Part, the <b>Flicker</b> script goes inside a lamp Part with a PointLight, <b>PulseGlow</b> goes inside a Highlight, and <b>Blink</b> goes inside a character model. Effects only move while the game is playing.</p>
+
+  <div class="ai"><h3>Ask AI: how do I build it?</h3><p>Ask for steps and explanations. Always tell it where you are and what your things are called.</p><div class="prompt">I'm building a film set in Roblox Studio. How do I make a window glow at night? Tell me step by step which properties to change in the Properties window.</div><div class="prompt">I'm in Roblox Studio. I have a Part called Lamp with a PointLight inside. Write a Luau Script that makes it flicker like a broken street light. Tell me exactly where to put the script and explain every line in simple words.</div><p>Before you paste any code, check the list in <a href="#r7">Reference G</a>.</p></div>
+
+  <div class="tip"><p><b>Moving around:</b> hold the right mouse button and use <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>, <kbd>Q</kbd> <kbd>E</kbd> for down and up. Hold <kbd>Shift</kbd> for slower. Lost? Select something and press <kbd>F</kbd>. More in <a href="#r1">Reference A</a>.</p></div>
+
+  <div class="diary"><h3>Diary (last 5 min)</h3><p>What I did. What went wrong or was hard. What I'll do next lesson. Save your file as the next version.</p></div>
+</section>
+
+<!-- LESSON 3 -->
+<section class="lesson" id="l3">
+  <div class="lesson-head"><div class="badge p">3</div><div><small>Lesson 3</small><h2>Actors and movement</h2></div></div>
+
+  <div class="read">
+    <p><b>Your actor is you.</b> Press Play, find your character in the Explorer under Workspace, copy it (<kbd>Cmd</kbd> + <kbd>C</kbd>), press Stop, click Workspace and paste (<kbd>Cmd</kbd> + <kbd>V</kbd>). Tick <b>Anchored</b> on its <b>HumanoidRootPart</b>. Done: your avatar stands on the set.</p>
+    <p><b>Movement</b> works with <b>key poses</b>. You don't draw every moment of a jump. You set 3–5 strong poses, and Studio draws everything in between. The pose before the jump, the crouch, is what makes it believable.</p>
+    <p>How you move your actor depends on your level:</p>
+    <table>
+      <tr><td><b>Basic</b></td><td>You play the character: walk, jump, sit, and use emotes like <code>/e wave</code>.</td></tr>
+      <tr><td><b>Advanced</b></td><td>You pose the character in the <b>Animation Editor</b>, like an action figure, and record it straight from the editor.</td></tr>
+      <tr><td><b>Pro</b></td><td>A script plays your animations and moves the camera.</td></tr>
+    </table>
+  </div>
+
+  <div class="watch"><div class="play">▶</div><div><b>Watch:</b> Station 2 of the practice place, Movement. Press Play: the pink character runs the four key poses as one jump, and the matching pose lights up behind it.</div></div>
+
+  <figure><img loading="lazy" src="img/keyposes.jpg" alt="Four key poses of a jump"><figcaption>The four key poses of a jump: stand, anticipation (crouch), peak, landing.</figcaption></figure>
+
+  <div class="grid2">
+    <figure><img loading="lazy" style="object-position:28% 50%" src="img/howto_board.jpg" alt="Animation Editor in 7 steps"><figcaption>The 7-step board at Station 2.</figcaption></figure>
+    <figure><img loading="lazy" style="object-position:52% 50%" src="img/bodyparts.jpg" alt="Body parts with colours"><figcaption>The body parts you'll rotate. Left and right are the character's, not yours.</figcaption></figure>
+  </div>
+
+  <div class="do">
+    <h3>Do: make your actor move</h3>
+    <p><b>Basic:</b> press Play and act. Type <code>/e wave</code>, <code>/e point</code>, <code>/e cheer</code>, <code>/e laugh</code> or <code>/e dance</code> in the chat. Walk, jump with <kbd>Space</kbd>, sit on a Seat.</p>
+    <p><b>Advanced and Pro:</b> the Animation Editor in 7 steps:</p>
+    <ol class="steps">
+      <li><b>Avatar</b> tab → <b>Animation Editor</b>.</li>
+      <li>Click your actor. Type a name, press <b>Create</b>.</li>
+      <li>Click <b>+</b> → <b>Add All Body</b>.</li>
+      <li>At 0:00, choose the <b>Rotate</b> tool, click a body part and turn it. A ◆ keyframe appears.</li>
+      <li>Drag the time bar to 0:10 and make pose 2. Then 0:20 and 0:30.</li>
+      <li>Press <kbd>Space</kbd> to play. Drag the ◆ keyframes to change the timing.</li>
+      <li><b>⋯</b> menu → <b>Save</b>.</li>
+    </ol>
+    <div class="warn"><p><b>Important:</b> an animation from the editor plays in the editor, not when you press Play. That's normal. Record it from the editor: place the Studio camera, start <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd>, press <kbd>Space</kbd>. Making it play in the game needs a script: that's the Pro level.</p></div>
+    <p>Moves this genre needs: turning to look at the camera, stepping back in fright, pointing, freezing, slowly walking away. More tips in <a href="#r2">Reference B</a>.</p>
+  </div>
+
+  <div class="tip"><p><b>Two characters, one player?</b> Copy your avatar as many times as you need: the anchored copies stand still while you play the moving one. Or: <b>Test</b> tab → <b>Clients and Servers</b> → 2 players → <b>Start</b>. Two game windows open, one character in each. Different <b>Body Colors</b> tell your characters apart.</p></div>
+
+  <div class="ai"><h3>Ask AI: coach my animation</h3><p>AI can't see your screen, so describe the pose in words.</p><div class="prompt">In the Roblox Animation Editor I'm animating an R15 character who gets scared. Which body parts should I rotate, in which direction, and in what order? Give me 4 key poses.</div><div class="prompt">Pro: my Script should play an animation but nothing happens. This is the red error from Output: [paste the error]. This is my script: [paste it]. What's wrong, and why?</div></div>
+
+  <div class="diary"><h3>Diary (last 5 min)</h3><p>What I did. What went wrong or was hard. What I'll do next lesson. Save your file as the next version.</p></div>
+</section>
+
+<!-- LESSON 4 -->
+<section class="lesson" id="l4">
+  <div class="lesson-head"><div class="badge l">4</div><div><small>Lesson 4</small><h2>Camera, talk, filming</h2></div></div>
+
+  <div class="read">
+    <p>Today you film. Every shot is a separate recording of 2–5 seconds. The camera tells the viewer how to feel:</p>
+    <table>
+      <tr><td><b>Wide</b></td><td>where we are</td><td><b>Close-up</b></td><td>fear, a reaction</td></tr>
+      <tr><td><b>Medium</b></td><td>what they're doing</td><td><b>High angle</b></td><td>small, helpless</td></tr>
+      <tr><td><b>Over the shoulder</b></td><td>a conversation</td><td><b>Low angle</b></td><td>big, scary</td></tr>
+    </table>
+    <p>To film: press Play, then <kbd>Left Shift</kbd> + <kbd>P</kbd> for the free camera. Fly with <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> and the right mouse button. Record with <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd>. Move slower than you think.</p>
+    <p>Change the lights to the "In this town" look: dusk, yellowish, faded, foggy.</p>
+  </div>
+
+  <div class="watch"><div class="play">▶</div><div><b>Watch:</b> Station 3 of the practice place. Press <kbd>T</kbd>: the camera flies through all six shots. Press <kbd>L</kbd> to switch day, dusk and midnight.</div></div>
+
+  <div class="grid3">
+    <figure><img loading="lazy" src="img/shot1.jpg" alt="Wide shot"><figcaption>1 Wide</figcaption></figure>
+    <figure><img loading="lazy" src="img/shot2.jpg" alt="Medium shot"><figcaption>2 Medium</figcaption></figure>
+    <figure><img loading="lazy" src="img/shot3.jpg" alt="Close-up"><figcaption>3 Close-up</figcaption></figure>
+    <figure><img loading="lazy" src="img/shot4.jpg" alt="Over the shoulder"><figcaption>4 Over the shoulder</figcaption></figure>
+    <figure><img loading="lazy" src="img/shot5.jpg" alt="High angle"><figcaption>5 High angle</figcaption></figure>
+    <figure><img loading="lazy" src="img/shot6.jpg" alt="Low angle"><figcaption>6 Low angle</figcaption></figure>
+  </div>
+
+  <div class="grid2">
+    <figure><img loading="lazy" src="img/light_day.jpg" alt="Day lighting"><figcaption>Default daylight.</figcaption></figure>
+    <figure><img loading="lazy" src="img/light_dusk.jpg" alt="Dusk lighting"><figcaption>The same street with "In this town" dusk settings.</figcaption></figure>
+  </div>
+
+  <h3>Moving the camera</h3>
+  <p>A still camera is fine. A moving one tells the viewer where to look and how to feel. Press <kbd>Y</kbd> at Station 3 to see all seven:</p>
+  <table>
+    <tr><th>Move</th><th>What the camera does</th><th>Use it for</th></tr>
+    <tr><td><b>Pan</b></td><td>turns left or right, stays in place</td><td>following someone, revealing what's next to them</td></tr>
+    <tr><td><b>Tilt</b></td><td>turns up or down</td><td>showing something huge, or looking down on someone</td></tr>
+    <tr><td><b>Dolly in / out</b></td><td>moves closer or further away</td><td>tension (in), loneliness (out)</td></tr>
+    <tr><td><b>Truck</b></td><td>slides sideways</td><td>walking alongside a character</td></tr>
+    <tr><td><b>Orbit</b></td><td>circles the character</td><td>a big moment, a realisation</td></tr>
+    <tr><td><b>Zoom</b></td><td>the lens changes, the camera stays</td><td>a sudden, uneasy push. Use it rarely</td></tr>
+    <tr><td><b>Crane</b></td><td>rises up or comes down</td><td>openings and endings</td></tr>
+  </table>
+  <figure class="clip"><video src="clips/dolly.mp4" poster="clips/dolly_poster.jpg" autoplay muted loop playsinline></video><figcaption>Dolly in: the camera moves closer, the tension rises.</figcaption></figure>
+  <figure class="clip"><video src="clips/orbit.mp4" poster="clips/orbit_poster.jpg" autoplay muted loop playsinline></video><figcaption>Orbit: the camera circles the character for the big moment.</figcaption></figure>
+  <p>With the free camera, hold <kbd>Shift</kbd> for slow, smooth moves: <kbd>A</kbd>/<kbd>D</kbd> to truck, <kbd>W</kbd>/<kbd>S</kbd> to dolly, <kbd>E</kbd>/<kbd>Q</kbd> to crane, the right mouse button to pan and tilt, the wheel to zoom. Pro: the scripts are in <a href="#r3">Reference C</a>.</p>
+
+  <h3>Showing that time passes</h3>
+  <figure class="clip"><video src="clips/timelapse.mp4" poster="clips/timelapse_poster.jpg" autoplay muted loop playsinline></video><figcaption>The same street from afternoon to night, only ClockTime changes.</figcaption></figure>
+  <table>
+    <tr><th>Trick</th><th>How</th></tr>
+    <tr><td><b>The light changes</b></td><td>Film one shot at <b>ClockTime</b> 14, the next at 18 or 0. Press <kbd>N</kbd> to watch a day in 8 seconds.</td></tr>
+    <tr><td><b>A clock</b></td><td>A clock in the shot, with the hand in a different place in the next shot.</td></tr>
+    <tr><td><b>Cut to black</b></td><td>A second of black between shots, or a caption: "Three hours later."</td></tr>
+    <tr><td><b>Lights come on</b></td><td>The street lamps are off in one shot and on in the next.</td></tr>
+    <tr><td><b>The same shot, changed</b></td><td>Film the exact same view twice: the bench empty, then the bench taken.</td></tr>
+  </table>
+
+  <h3>Voice-over: who should speak?</h3>
+  <p>Many "In this town" videos use a narrator voice. You have four options, and each changes how the video feels:</p>
+  <table>
+    <tr><th>Option</th><th>Good for</th><th>Remember</th></tr>
+    <tr><td><b>No voice</b>, only captions and music</td><td>mystery, and viewers who watch with the sound off</td><td>captions must do all the work</td></tr>
+    <tr><td><b>Your own voice</b></td><td>the most personal, and the easiest to fix</td><td>quiet room, close to the mic, one line at a time</td></tr>
+    <tr><td><b>A classmate's voice</b></td><td>a character who isn't you</td><td>ask first, credit them at the end</td></tr>
+    <tr><td><b>A text-to-speech voice</b></td><td>the flat, robot narrator the trend often uses</td><td>a generic voice only, never one that copies a real person. Write it in your diary</td></tr>
+  </table>
+  <p>Write the narration in your Story Doc first, in short sentences. Read it slower than feels natural. Record each line as its own clip so you can place it exactly. Think about it: what changes when a robot voice tells a scary story instead of a human?</p>
+
+  <h3>Speech bubbles</h3>
+  <figure><img loading="lazy" src="img/bubbles.jpg" alt="Four speech bubble styles"><figcaption>Station 4: speech, thought, shout, whisper. The narrator's "In this town…" text goes on in your video editor, not in Roblox.</figcaption></figure>
+  <p>To use one: in the practice place, open <b>ServerStorage → BubbleKit</b> in the Explorer. Copy a bubble, paste it into your own place, then into your actor's <b>Head</b>, and change its <b>Text</b>.</p>
+
+  <div class="do">
+    <h3>Do: film your shot list</h3>
+    <ol class="steps">
+      <li>Set your lights (<a href="#r4">Reference D</a>).</li>
+      <li>Press Play, then <kbd>Left Shift</kbd> + <kbd>P</kbd>. Hide the menus: hold <kbd>Cmd</kbd> + <kbd>Left Shift</kbd> and press <kbd>G</kbd>, then <kbd>N</kbd> for name tags.</li>
+      <li><kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> → <b>Record Selected Portion</b> → drag over the game view → <b>Record</b>.</li>
+      <li>Leave 1 second before and after the action. Record each shot 2–3 times.</li>
+      <li>Making an upright video? Keep your actor in the middle third of the frame: the sides get cut off.</li>
+      <li>Rename each clip with its number straight away: <code>shot_03.mov</code>. All the recording details are in <a href="#r8">Reference H</a>.</li>
+    </ol>
+  </div>
+
+  <h3>Sound</h3>
+  <figure><img loading="lazy" src="img/sound.jpg" alt="Station 6: sound pads"><figcaption>Station 6: step on a pad to hear footsteps, a bell, a heartbeat, wind, a creaking door, a whisper or a music box.</figcaption></figure>
+  <p>Sound is half the fear. But a Mac screen recording doesn't record the game's sound, so use Station 6 to choose what you need, and write it in your shot list. Then add the same kind of sound in your video editor in Lesson 5 (Canva and iMovie both have sound effect libraries).</p>
+
+  <div class="ai"><h3>Ask AI: plan your shots</h3><p>Give it your story and ask for a plan. Then check it against your own idea.</p><div class="prompt">Here's my story in 6 sentences: [paste it]. Make a shot list of 8 shots for a 45-second video. For each shot say: what we see, the camera angle (wide, medium, close-up, over the shoulder, high, low) and the sound.</div><div class="prompt">Which camera angle makes a character look scary, and which makes them look helpless? Explain with an example from a film.</div></div>
+
+  <div class="diary"><h3>Diary (last 5 min)</h3><p>What I did. What went wrong or was hard. What I'll do next lesson. Copy your clips somewhere safe.</p></div>
+</section>
+
+<!-- LESSON 5 -->
+<section class="lesson" id="l5">
+  <div class="lesson-head"><div class="badge v">5</div><div><small>Lesson 5</small><h2>Editing and handing in</h2></div></div>
+
+  <div class="read">
+    <p>Editing is where it becomes an "In this town" video. The rhythm:</p>
+    <table>
+      <tr><td><b>0–2 s</b></td><td>the rule on screen, big, in the middle</td></tr>
+      <tr><td><b>2–10 s</b></td><td>the town and the character</td></tr>
+      <tr><td><b>10–40 s</b></td><td>the rule in action, they break it, the consequence</td></tr>
+      <tr><td><b>last 5–10 s</b></td><td>the twist, then one strong final shot</td></tr>
+    </table>
+    <p>Cut every 2–5 seconds. Keep the music quieter than any voice. Use music from your editor's own library, not a famous song.</p>
+    <p>Pick one editor: <b>Canva</b> (easiest, upright video), <b>iMovie</b> (simple, landscape only) or <b>DaVinci Resolve</b> (most powerful, for Pro).</p>
+  </div>
+
+  <div class="do">
+    <h3>Canva</h3>
+    <ol class="steps">
+      <li><b>Create a design</b> → search <b>Mobile Video</b> (1080 × 1920, upright).</li>
+      <li><b>Uploads</b> → upload your clips. Drag them onto the timeline in shot-list order.</li>
+      <li>Trim each clip by dragging its edges. Right-click a clip to <b>split</b> it.</li>
+      <li><b>Text</b> → add "In this town…" on the first clip. Big, centred, readable.</li>
+      <li><b>Audio</b> → pick music. Click it on the timeline to lower its volume.</li>
+      <li><b>Share</b> → <b>Download</b> → <b>MP4 Video</b>.</li>
+    </ol>
+  </div>
+
+  <div class="do">
+    <h3>iMovie</h3>
+    <ol class="steps">
+      <li><b>Create New → Movie</b>. Import your clips and drag them into the timeline.</li>
+      <li>Trim by dragging clip edges. <kbd>Cmd</kbd> + <kbd>B</kbd> splits a clip at the playhead.</li>
+      <li><b>Titles</b> for the rule and captions. <b>Audio &amp; Video</b> for sound effects.</li>
+      <li>The microphone icon under the viewer records your voice.</li>
+      <li><b>File → Share → File</b> to export. The video stays landscape: that's fine.</li>
+    </ol>
+  </div>
+
+  <div class="do">
+    <h3>DaVinci Resolve (Pro)</h3>
+    <ol class="steps">
+      <li>New project. In <b>Project Settings</b>, set the timeline to <b>1080 × 1920</b> for upright video.</li>
+      <li>On the <b>Cut</b> or <b>Edit</b> page, drag your clips to the timeline. <kbd>B</kbd> is the blade tool for cutting.</li>
+      <li><b>Effects → Titles → Text+</b> for the rule and captions.</li>
+      <li><b>Deliver</b> page → MP4 → <b>Add to Render Queue</b> → <b>Render All</b>.</li>
+    </ol>
+  </div>
+
+  <h3>Captions: required</h3>
+  <p>Most people scroll with the sound off. Every spoken line and every important sound gets a caption, big and readable, in the lower third of the screen. Canva can make them automatically from your voice: check the spelling afterwards.</p>
+
+  <h3>Title, thumbnail, caption</h3>
+  <figure><img loading="lazy" src="img/thumbnail.jpg" alt="The thumbnail booth"><figcaption>Station 8, the thumbnail booth: a curved backdrop, three lights, and marks for your actor and your camera.</figcaption></figure>
+  <table>
+    <tr><th>What</th><th>How</th></tr>
+    <tr><td><b>Thumbnail</b></td><td>Pose your actor in the thumbnail booth with a big feeling. Freecam to the blue mark, hide the menus, <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd> to screenshot. Add 1 to 3 big words in Canva.</td></tr>
+    <tr><td><b>Title</b></td><td>Six words at most. Make people curious without giving the twist away.</td></tr>
+    <tr><td><b>Caption</b></td><td>One line, like under a real post. Add <code>#inthistown</code>, and the credit if you adapted Örkény.</td></tr>
+  </table>
+  <div class="tip"><p><b>Think about it:</b> the first 2 seconds, the thumbnail and the title decide whether anyone watches. That's why the trend uses the same formula again and again: it works on the algorithm. What happens to a format when thousands of people, and AIs, copy it every day?</p></div>
+
+  <div class="ai"><h3>Ask AI: a second opinion</h3><p>You can't show AI your video, but you can describe your edit and ask for feedback.</p><div class="prompt">My video is 50 seconds. Shot 1 is the rule for 2 seconds, then 6 shots of 3 seconds, then the twist for 10 seconds. Is the twist too slow? How would you change the timing?</div><div class="prompt">How do I make text appear for exactly 2 seconds at the start of a video in Canva?</div></div>
+
+  <div class="do" style="border-left-color:var(--pink);background:#fff4f9">
+    <h3>Hand-in checklist</h3>
+    <p>☐ Video, 30–60 s, .mp4, rule on screen in the first 2 seconds<br>
+    ☐ Captions for every line and important sound<br>
+    ☐ Studio file, latest version, <code>name_inthistown_vX.rbxl</code><br>
+    ☐ Title, thumbnail, one-line caption<br>
+    ☐ Story Doc: rule card, story, shot list, a diary entry for every lesson, every AI use noted<br>
+    ☐ Pro: 150 words on "What does a hand-made video have that an AI-generated one doesn't?"</p>
+  </div>
+
+  <h3>How it's marked</h3>
+  <table>
+    <tr><th></th><th>5</th><th>4</th><th>3</th></tr>
+    <tr><td><b>It works</b></td><td>Plays, 30–60 s, the rule can be seen in the picture, captions all the way through</td><td>Plays, right length, the rule mostly shown, a few captions missing</td><td>Plays, but the rule is only told in text, or the length or captions are off</td></tr>
+    <tr><td><b>Thinking</b></td><td>A clear rule you can see, all four steps, a twist that surprises but makes sense</td><td>All four steps, but the twist is easy to guess or a bit random</td><td>A story is there, but one step is missing or unclear</td></tr>
+    <tr><td><b>Craft</b></td><td>A set built for the camera, varied shots with at least one move, clear poses, the rule in the first 2 s, clean cuts, good sound, a strong thumbnail and title</td><td>Varied shots, a few rough cuts or sound levels</td><td>Few kinds of shot, long or shaky shots, rough edit</td></tr>
+    <tr><td><b>Process</b></td><td>Story Doc done before filming, a diary entry every lesson with every AI use noted, numbered versions</td><td>Diary mostly complete</td><td>Gaps in the diary, or the Story Doc written after filming</td></tr>
+  </table>
+
+  <div class="warn"><p><b>AI rule: AI helps, you direct.</b> Use AI for ideas, explanations, scripts and fixes, and write every use in your diary: what you asked and what you changed. The story is yours, and you build the set, pose the actors, film the shots and cut the video yourself. No AI-generated video, and no "one prompt" films. See <a href="#r7">Reference G</a>.</p></div>
+
+  <div class="diary"><h3>Last diary entry</h3><p>What I'm proud of. What I'd do differently. What I learned about how these videos are made.</p></div>
+</section>
+
+<!-- PREMIERE -->
+<section class="lesson" id="l6">
+  <div class="lesson-head"><div class="badge l">★</div><div><small>Bonus</small><h2>Premiere</h2></div></div>
+  <p>After the deadline we watch every film together, on the big screen, lights off.</p>
+  <div class="do">
+    <h3>While you watch</h3>
+    <p>For each film, write <b>two stars and a wish</b>: two things that worked, one thing that could be even better. Be specific: "the low angle on the shadow was scary" helps more than "nice".</p>
+  </div>
+  <h3>Awards</h3>
+  <table>
+    <tr><td>Best twist</td><td>Scariest sound</td><td>Best shot</td></tr>
+    <tr><td>Best rule</td><td>Best thumbnail</td><td>Best Örkény adaptation</td></tr>
+  </table>
+</section>
+
+<!-- REFERENCE A -->
+<section class="ref" id="r1">
+  <div class="ref-head"><span class="kicker">Reference A</span><h2>Studio basics</h2></div>
+  <h3>Moving the camera while building</h3>
+  <table>
+    <tr><th>Do this</th><th>What happens</th></tr>
+    <tr><td>Hold right mouse button and drag</td><td>turn the camera</td></tr>
+    <tr><td>Right mouse + <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>move forward, left, back, right</td></tr>
+    <tr><td><kbd>Q</kbd> / <kbd>E</kbd></td><td>down / up</td></tr>
+    <tr><td>Hold <kbd>Shift</kbd></td><td>slower, more precise</td></tr>
+    <tr><td>Mouse wheel</td><td>zoom</td></tr>
+    <tr><td>Select something, press <kbd>F</kbd></td><td>fly to it</td></tr>
+  </table>
+  <h3>Useful keys</h3>
+  <table>
+    <tr><td><kbd>Cmd</kbd> + <kbd>D</kbd></td><td>duplicate</td><td><kbd>Cmd</kbd> + <kbd>G</kbd></td><td>group into a Model</td></tr>
+    <tr><td><kbd>Cmd</kbd> + <kbd>Z</kbd></td><td>undo</td><td><kbd>Cmd</kbd> + <kbd>S</kbd></td><td>save</td></tr>
+  </table>
+  <h3>Saving</h3>
+  <p>Never press <b>Publish to Roblox</b>. Save as a file, and number every version: <code>v1</code>, <code>v2</code>, <code>v3</code>. If something breaks, open the last good one.</p>
+  <h3>Indoors</h3>
+  <p>A room is a floor and three walls. The camera stands where the fourth wall would be. Light it with a <b>PointLight</b> inside a small Part.</p>
+  <h3>Hiding an actor's name tag</h3>
+  <p>In the actor model, click <b>Humanoid</b> and set <b>DisplayDistanceType</b> to <b>None</b>.</p>
+  <h3>Extra actors</h3>
+  <p><b>Avatar</b> tab → <b>Rig Builder</b> → <b>R15</b>. A plain dummy that animates just the same.</p>
+  <h3>Several actors at once (Basic)</h3>
+  <p><b>Test</b> tab → <b>Clients and Servers</b> → 3 players → <b>Start</b>. Windows 1 and 2 are your actors, window 3 is the camera. Better in pairs: one acts, one films. <b>Cleanup</b> closes all windows.</p>
+</section>
+
+<!-- REFERENCE B -->
+<section class="ref" id="r2">
+  <div class="ref-head"><span class="kicker">Reference B</span><h2>Animation in detail</h2></div>
+  <table>
+    <tr><th>Trick</th><th>What it means</th></tr>
+    <tr><td><b>Key poses first</b></td><td>3–5 poses per movement: start, wind-up, peak, stop. Studio fills the rest.</td></tr>
+    <tr><td><b>Anticipation</b></td><td>Before a jump, crouch. Before a turn, the shoulder moves first.</td></tr>
+    <tr><td><b>Overshoot</b></td><td>The hand goes a little past its target, then settles back.</td></tr>
+    <tr><td><b>Hold</b></td><td>Two identical keyframes in a row = the character freezes. Great while a caption is on screen.</td></tr>
+    <tr><td><b>Overlap</b></td><td>Not everything moves at once: head, then body, then hand. Drag one part's keyframes a few frames later.</td></tr>
+    <tr><td><b>Easing</b></td><td>Right-click a keyframe → <b>Easing Style</b>. Cubic or Sine is smooth. Constant is jerky, good for horror.</td></tr>
+    <tr><td><b>Loop</b></td><td>Copy the first keyframes to the end. The <b>Loop</b> button repeats it.</td></tr>
+  </table>
+  <h3>Recording from the Animation Editor</h3>
+  <p>The editor plays one actor at a time, so work shot by shot: one moving actor per shot, the others stand still. Place the Studio camera, start <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> over the 3D view, press <kbd>Space</kbd>. A blue selection outline may show: crop it in your editor, or use the Pro method.</p>
+</section>
+
+<!-- REFERENCE C -->
+<section class="ref" id="r3">
+  <div class="ref-head"><span class="kicker">Reference C</span><h2>Pro scripts</h2></div>
+  <h3>1. Publish your animation to get an ID</h3>
+  <p>In the Animation Editor: <b>⋯</b> → <b>Publish to Roblox</b>. Copy the number (Asset ID). This uploads only the animation, not your place.</p>
+  <h3>2. Play it from a Script in ServerScriptService</h3>
+<pre><code><span class="c">-- Mira plays her animation after 3 seconds</span>
+local rig = workspace:WaitForChild("Mira")
+local humanoid = rig:WaitForChild("Humanoid")
+local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+
+local anim = Instance.new("Animation")
+anim.AnimationId = "rbxassetid://PUT_YOUR_NUMBER_HERE"
+local track = animator:LoadAnimation(anim)
+
+task.wait(3)
+track:Play()
+track.Stopped:Wait()   <span class="c">-- wait until it finishes</span></code></pre>
+  <p>Several actors: repeat for each one, and time them with <code>task.wait()</code>.</p>
+  <h3>3. Save camera positions</h3>
+  <ol class="steps">
+    <li>In Workspace, make a folder called <code>CameraShots</code>.</li>
+    <li>Put the Studio camera where shot 1 should be.</li>
+    <li>Add a Part to the folder named <code>1</code>: Anchored, Transparency 1, CanCollide off.</li>
+    <li>In the <b>Command Bar</b> (View menu) type and press Enter: <code>workspace.CameraShots["1"].CFrame = workspace.CurrentCamera.CFrame</code></li>
+    <li>Repeat for <code>2</code>, <code>3</code>…</li>
+  </ol>
+  <h3>4. A LocalScript in StarterPlayer → StarterPlayerScripts</h3>
+<pre><code><span class="c">-- The camera flies through the CameraShots points</span>
+local TweenService = game:GetService("TweenService")
+local camera = workspace.CurrentCamera
+local shots = workspace:WaitForChild("CameraShots")
+local SHOT_TIME = 3   <span class="c">-- seconds between two points</span>
+
+task.wait(2)
+camera.CameraType = Enum.CameraType.Scriptable
+camera.CFrame = shots["1"].CFrame
+
+for i = 2, #shots:GetChildren() do
+	local target = shots[tostring(i)]
+	local tween = TweenService:Create(camera,
+		TweenInfo.new(SHOT_TIME, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+		{ CFrame = target.CFrame })
+	tween:Play()
+	tween.Completed:Wait()
+	task.wait(1)   <span class="c">-- short pause at each point</span>
+end</code></pre>
+  <p>Hard cuts instead of flying: replace the tween with <code>camera.CFrame = target.CFrame</code> and <code>task.wait(SHOT_TIME)</code>.</p>
+  <h3>5. Camera moves by script</h3>
+  <p>A dolly in towards a character, in a LocalScript. Change the two positions to make a truck or a crane.</p>
+<pre><code><span class="c">-- Dolly in: the camera moves from far to close, always looking at Mira's head</span>
+local RunService = game:GetService("RunService")
+local camera = workspace.CurrentCamera
+local head = workspace:WaitForChild("Mira"):WaitForChild("Head")
+
+local START = head.Position + Vector3.new(0, 1, 20)   <span class="c">-- far away</span>
+local FINISH = head.Position + Vector3.new(0, 0.5, 5) <span class="c">-- close</span>
+local SECONDS = 4
+
+task.wait(2)
+camera.CameraType = Enum.CameraType.Scriptable
+local t0 = os.clock()
+while true do
+	local a = math.min((os.clock() - t0) / SECONDS, 1)
+	camera.CFrame = CFrame.lookAt(START:Lerp(FINISH, a), head.Position)
+	if a >= 1 then break end
+	RunService.RenderStepped:Wait()
+end</code></pre>
+  <h3>6. Time passes by script</h3>
+<pre><code><span class="c">-- A whole day in 8 seconds (Script in ServerScriptService)</span>
+local TweenService = game:GetService("TweenService")
+local Lighting = game:GetService("Lighting")
+Lighting.ClockTime = 12
+task.wait(3)
+TweenService:Create(Lighting, TweenInfo.new(8, Enum.EasingStyle.Linear), { ClockTime = 24 }):Play()</code></pre>
+
+</section>
+
+<!-- REFERENCE D -->
+<section class="ref" id="r4">
+  <div class="ref-head"><span class="kicker">Reference D</span><h2>Lights and bubbles</h2></div>
+  <h3>The "In this town" look</h3>
+  <p>Click <b>Lighting</b> in the Explorer. These are the settings behind the dusk picture in Lesson 4:</p>
+  <table>
+    <tr><th>Setting</th><th>Does</th><th>Day</th><th>Dusk</th><th>Midnight</th></tr>
+    <tr><td><b>ClockTime</b></td><td>time of day</td><td>14</td><td>18.2</td><td>0</td></tr>
+    <tr><td><b>Brightness</b></td><td>how bright</td><td>2</td><td>1.2</td><td>0.6</td></tr>
+    <tr><td><b>Ambient</b></td><td>shadow colour</td><td>grey</td><td>warm brown</td><td>dark blue</td></tr>
+  </table>
+  <p>Add with <b>+</b> on Lighting:</p>
+  <table>
+    <tr><td><b>Atmosphere</b></td><td>fog. Density 0.45, Color yellowish grey, Haze 2</td></tr>
+    <tr><td><b>ColorCorrection</b></td><td>Saturation −0.3 (faded), TintColor pale yellow</td></tr>
+    <tr><td><b>Bloom</b></td><td>Neon lights glow and spread</td></tr>
+  </table>
+  <p>Street lamp: a thin Part, a small Neon ball on top, a <b>PointLight</b> inside the ball.</p>
+  <h3>Speech bubbles</h3>
+  <table>
+    <tr><th>Bubble</th><th>When</th><th>Looks like</th></tr>
+    <tr><td><b>Speech</b></td><td>normal talking</td><td>white, round, with a tail</td></tr>
+    <tr><td><b>Thought</b></td><td>inside their head</td><td>soft cloud, small dots</td></tr>
+    <tr><td><b>Shout</b></td><td>loud!</td><td>caps, yellow, red border, tilted</td></tr>
+    <tr><td><b>Whisper</b></td><td>quiet</td><td>see-through, thin, small italic text</td></tr>
+  </table>
+  <p>Build your own: click the actor's <b>Head</b> → <b>+</b> → <b>BillboardGui</b>. Set <b>Size</b> to <code>{7, 0},{3, 0}</code> (in studs, so it scales with distance) and <b>StudsOffset</b> to <code>0, 3, 0</code>. Inside it: <b>+</b> → <b>TextLabel</b>, Size <code>{1, 0},{1, 0}</code>, <b>TextScaled</b> on. Untick <b>Enabled</b> to hide it.</p>
+</section>
+
+<!-- REFERENCE E -->
+<section class="ref" id="r5">
+  <div class="ref-head"><span class="kicker">Reference E</span><h2>Fix it</h2></div>
+  <table>
+    <tr><th>Problem</th><th>Fix</th></tr>
+    <tr><td>Something falls over when I press Play</td><td>Tick <b>Anchored</b></td></tr>
+    <tr><td>My actor falls over</td><td>Tick <b>Anchored</b> on its <b>HumanoidRootPart</b></td></tr>
+    <tr><td>My actor's pose resets when I press Play</td><td>The Humanoid resets standing actors. Use the Animation Editor and play the animation, or delete the Humanoid from an actor that only needs to stand still</td></tr>
+    <tr><td>A Toolbox model acts strangely</td><td>Is there a Script inside? Delete it</td></tr>
+    <tr><td>Everything is too dark</td><td>Lighting: Brightness up, or add a PointLight</td></tr>
+    <tr><td>Red error message</td><td><b>View → Output</b>. The first red line names the script and line. Usually a misspelled name or a missing <code>end</code></td></tr>
+    <tr><td>The free camera won't start</td><td>Only while playing, and only with the <b>left</b> Shift</td></tr>
+    <tr><td>Animation won't start from a script</td><td>Right number after <code>rbxassetid://</code>? Same actor name as in the script?</td></tr>
+    <tr><td>The LocalScript doesn't run</td><td>It must be in <b>StarterPlayerScripts</b>, not in Workspace</td></tr>
+    <tr><td>I broke everything</td><td>Open your previous version. That's why we number them</td></tr>
+  </table>
+  <p>Still stuck? Ask a classmate first, then me. If you ask an AI, write it in your diary.</p>
+</section>
+
+<!-- REFERENCE F -->
+<section class="ref" id="r6">
+  <div class="ref-head"><span class="kicker">Reference F</span><h2>Links</h2></div>
+  <h3>Roblox Creator Docs</h3>
+  <ul class="links">
+    <li><a href="https://create.roblox.com/docs/tutorials/curriculums/animator/work-with-the-animation-editor">Work with the Animation Editor</a>: a step-by-step lesson with a ready-made rig</li>
+    <li><a href="https://create.roblox.com/docs/tutorials/use-case-tutorials/animation/create-an-animation">Create an animation</a>: posing a rig from start to finish</li>
+    <li><a href="https://create.roblox.com/docs/animation/editor">Animation Editor</a>: every button explained</li>
+    <li><a href="https://create.roblox.com/docs/animation/curve-editor">Curve Editor</a>: smoother movement (Pro)</li>
+    <li><a href="https://create.roblox.com/docs/studio/rig-builder">Rig Builder</a>: ready-made dummies</li>
+    <li><a href="https://create.roblox.com/docs/workspace/camera/free-camera">Free camera</a>: all the freecam keys</li>
+    <li><a href="https://create.roblox.com/docs/animation/capture">Animation Capture</a>: animation from video (ask me before using it: it uploads your video to Roblox)</li>
+  </ul>
+  <h3>AI in Roblox Studio</h3>
+  <ul class="links">
+    <li><a href="https://create.roblox.com/docs/assistant/guide">Assistant guide</a>: what the built-in Roblox Assistant can do</li>
+    <li><a href="https://create.roblox.com/docs/ai/accelerated-workflows">AI on Roblox</a>: all of Roblox's AI tools in one place</li>
+    <li><a href="https://create.roblox.com/docs/studio/mcp">Studio MCP server</a>: how outside AI connects to Studio</li>
+  </ul>
+  <h3>Editors</h3>
+  <ul class="links">
+    <li><a href="https://www.canva.com">Canva</a></li>
+    <li><a href="https://support.apple.com/imovie">iMovie support</a></li>
+    <li><a href="https://www.blackmagicdesign.com/products/davinciresolve">DaVinci Resolve</a></li>
+  </ul>
+</section>
+
+<!-- REFERENCE G -->
+<section class="ref" id="r7">
+  <div class="ref-head"><span class="kicker">Reference G</span><h2>Your AI helper</h2></div>
+  <figure><img loading="lazy" src="img/ai_boards.jpg" alt="Station 7 boards"><figcaption>Station 7 in the practice place: ask it well, check before you paste, and who's helping.</figcaption></figure>
+
+  <h3>Who's helping? Three kinds of AI</h3>
+  <table>
+    <tr><th>Kind</th><th>Where it lives</th><th>What it can do</th></tr>
+    <tr><td><b>A chatbot</b>: Gemini (your school account), ChatGPT</td><td>In the browser, outside Studio</td><td>Explains, writes code, gives ideas. It can't see your place: you copy things in and out yourself.</td></tr>
+    <tr><td><b>Roblox Assistant</b></td><td>Inside Studio (the Assistant button)</td><td>Sees your place. It can plan, write and run code, build objects, make meshes and materials, and playtest. Powerful, so be specific and check what it changed.</td></tr>
+    <tr><td><b>An AI through MCP</b></td><td>Outside Studio, connected to it</td><td>MCP (Model Context Protocol) is a plug that lets an outside AI, like Claude, work inside Studio directly: read your place, add parts, run scripts. The practice place you're walking through was built this way, with your teacher directing it.</td></tr>
+  </table>
+  <p>Roblox calls this "agentic": the AI doesn't only answer, it does things. That's why the rule matters: <b>AI helps, you direct.</b></p>
+
+  <h3>How to ask: the recipe</h3>
+  <ol class="steps">
+    <li><b>Say where you are.</b> "I'm in Roblox Studio. This is a Script in ServerScriptService."</li>
+    <li><b>Name your things exactly</b>, as they appear in your Explorer: "a Part called Bell", "a model called Mira".</li>
+    <li><b>Say what should happen</b>, step by step, like a recipe.</li>
+    <li><b>Ask for an explanation</b> of every line, in simple words.</li>
+    <li><b>If it breaks</b>, paste the red error from Output and ask why.</li>
+  </ol>
+  <table>
+    <tr><th>Weak prompt</th><th>Strong prompt</th></tr>
+    <tr><td>make my game scary</td><td>I'm in Roblox Studio. Make the Part called Lamp flicker every few seconds, like a broken street light. Explain each line.</td></tr>
+    <tr><td>fix my code</td><td>This Script is inside a Part called Door. It should turn the door see-through when a player touches it, but nothing happens. Output says: [error]. Here's the script: [script].</td></tr>
+    <tr><td>write my story</td><td>My rule is [rule]. Ask me 5 questions that would help me find a better twist. Don't write the story for me.</td></tr>
+  </table>
+
+  <h3>Prompt bank</h3>
+  <table>
+    <tr><th>I want to…</th><th>Ask</th></tr>
+    <tr><td>understand a script</td><td>Explain this Roblox Luau script line by line, like I'm 12: [script]</td></tr>
+    <tr><td>make something move</td><td>Write a Luau Script that makes the Part called Platform move up and down slowly forever, using TweenService. Where does it go?</td></tr>
+    <tr><td>make something happen on touch</td><td>When a player touches the Part called Trigger, play the Sound inside it once. Explain each line.</td></tr>
+    <tr><td>fix an error</td><td>What does this Roblox error mean, and how do I fix it? [paste the red line]</td></tr>
+    <tr><td>find a setting</td><td>In Roblox Studio, which Lighting properties make a scene look like dusk with fog?</td></tr>
+    <tr><td>learn a tool</td><td>How do I use the Animation Editor in Roblox Studio to make a character wave? Short steps.</td></tr>
+    <tr><td>get feedback</td><td>Here's my shot list: [paste]. What's the weakest shot, and how could I make it stronger?</td></tr>
+  </table>
+
+  <h3>Reading AI code: what the parts mean</h3>
+<pre><code><span class="c">-- Lines starting with -- are comments: notes for humans. The game ignores them.</span>
+
+<span class="c">-- "local" gives something a name. script.Parent = the thing this script is inside.</span>
+local part = script.Parent
+
+<span class="c">-- Find something by its exact name.</span>
+local light = part:FindFirstChild("PointLight")
+
+<span class="c">-- An event: run this when something touches the part.</span>
+part.Touched:Connect(function(hit)
+	<span class="c">-- Only if the light was found...</span>
+	if light then
+		<span class="c">-- ...change a property, like in the Properties window.</span>
+		light.Enabled = false
+	end
+end)
+<span class="c">-- Every "function" and every "if" needs its own "end".</span>
+
+<span class="c">-- Pause for 2 seconds.</span>
+task.wait(2)</code></pre>
+  <p>Names in quotes (<code>"PointLight"</code>) must match your Explorer exactly, capital letters too. If the AI's names are different from yours, change them in the code.</p>
+
+  <h3>Before you paste: the checklist</h3>
+  <table>
+    <tr><td>✓</td><td>I can say what every line does. If not, I ask.</td></tr>
+    <tr><td>✓</td><td>The names match my Explorer exactly.</td></tr>
+    <tr><td>✓</td><td>I know if it's a <b>Script</b> (runs on the server, goes in a Part or ServerScriptService) or a <b>LocalScript</b> (runs for one player, goes in StarterPlayerScripts).</td></tr>
+    <tr><td>✓</td><td>It's Luau for Roblox, not Python or code for another game engine.</td></tr>
+    <tr><td>✓</td><td>I saved a new version of my file first.</td></tr>
+    <tr><td>✓</td><td>After pasting, I press Play and check <b>Output</b> for red lines.</td></tr>
+  </table>
+
+  <div class="warn">
+    <p><b>Danger signs: don't run code that has these</b>, from AI or from anywhere else:</p>
+    <p><code>require(123456789)</code> with a number inside: it loads someone else's hidden code into your place. <code>loadstring</code>, <code>getfenv</code>, <code>HttpService</code> or web links: they can run or fetch code you can't see. Long lines of random letters and numbers: hidden code. Ask me first.</p>
+  </div>
+
+  <h3>When AI is wrong</h3>
+  <p>AI sounds sure even when it's wrong. Common mistakes: it invents a property or a button that doesn't exist, uses an old way of doing things, or uses names that aren't in your place. If something doesn't work, tell it exactly what happened and paste the error. If it goes round in circles, check the <a href="#r6">official docs</a> or ask a classmate.</p>
+
+  <h3>What AI can and can't do in this project</h3>
+  <table>
+    <tr><th>Yes, and note it in your diary</th><th>No</th></tr>
+    <tr><td>Ideas for rules and twists (you choose and change them)<br>Explaining tools, settings and code<br>Writing and fixing scripts for effects, cameras and animations<br>Roblox Assistant building a prop you asked for<br>Feedback on your shot list and timing</td><td>Writing your story for you<br>Generating the video, or any shot of it<br>"One prompt" films: an AI building the whole set and scene<br>AI voices pretending to be real people</td></tr>
+  </table>
+  <p>In your diary, every AI use gets one line: <b>what I asked</b>, and <b>what I changed or learned</b>.</p>
+</section>
+
+<!-- REFERENCE H -->
+<section class="ref" id="r8">
+  <div class="ref-head"><span class="kicker">Reference H</span><h2>Recording</h2></div>
+  <h3>Before you press record</h3>
+  <ol class="steps">
+    <li>Turn on <b>Do Not Disturb</b> (Control Centre → Focus), so no notifications pop up in your shot.</li>
+    <li>Make Roblox Studio full screen (the green button, top left of the window).</li>
+    <li>Set your lights, then press <b>Play</b> and <kbd>Left Shift</kbd> + <kbd>P</kbd> for the free camera.</li>
+    <li>Hide the menus: hold <kbd>Cmd</kbd> + <kbd>Left Shift</kbd> and press <kbd>G</kbd> (Roblox menus), <kbd>C</kbd> (game buttons), <kbd>N</kbd> (name tags).</li>
+    <li>Fly to the start of your shot and stop.</li>
+  </ol>
+  <h3>Recording with Cmd + Shift + 5</h3>
+  <table>
+    <tr><th>Setting</th><th>Choose</th><th>Why</th></tr>
+    <tr><td>Record Entire Screen / Selected Portion</td><td><b>Selected Portion</b>, dragged over the game view</td><td>no Studio buttons in your clip</td></tr>
+    <tr><td>Options → Save to</td><td>a folder called <code>In This Town clips</code></td><td>not a messy Desktop</td></tr>
+    <tr><td>Options → Microphone</td><td><b>None</b></td><td>sound goes in during editing</td></tr>
+    <tr><td>Options → Show Floating Thumbnail</td><td><b>off</b></td><td>the file saves straight away</td></tr>
+    <tr><td>Options → Show Mouse Clicks</td><td><b>off</b></td><td>no circles in your film</td></tr>
+  </table>
+  <p>Click <b>Record</b>. Wait one second, do the move, wait one second, then stop with the button in the menu bar (or <kbd>Cmd</kbd> + <kbd>Ctrl</kbd> + <kbd>Esc</kbd>).</p>
+  <h3>Upright or wide?</h3>
+  <p>For an upright 9:16 video like TikTok, make the Studio window tall and narrow before recording, or record wide and crop in Canva. Pick one and stick to it for every shot.</p>
+  <h3>Every take</h3>
+  <p>☐ menus hidden &nbsp; ☐ 1 second still at the start and end &nbsp; ☐ slow, smooth movement &nbsp; ☐ renamed straight away: <code>shot_03_take2.mov</code></p>
+  <div class="warn"><p><b>No sound:</b> a Mac screen recording doesn't record the game's sound. Choose your sounds at Station 6, then add them in your editor.</p></div>
+  <h3>Screenshots</h3>
+  <p><kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd>, then drag over the area. Press <kbd>Space</kbd> after it to capture one whole window.</p>
+</section>
+
+<!-- REFERENCE I -->
+<section class="ref" id="r9">
+  <div class="ref-head"><span class="kicker">Reference I</span><h2>Questions</h2></div>
+  <p>The questions people ask most. Can't find yours? Ask a classmate, then me.</p>
+  <h3>The story</h3>
+  <div class="faq">
+    <div class="qa" data-k="horror funny comedy weird genre"><p class="q">Does it have to be scary?</p><p>No. The trend is often creepy, but funny and weird work just as well. "In this town, everyone walks backwards on Tuesdays" or "In this town, the pigeons are in charge" are great rules. The four steps stay the same: rule, consequence, rule-breaker, twist.</p></div>
+    <div class="qa" data-k="idea brainstorm stuck rule"><p class="q">My rule is boring. How do I make it better?</p><p>Make it something you can see, make it specific, and give it a time or a place. "Bad things happen at night" is vague. "In this town, if the bell rings twice, nobody may move until sunrise" is a rule you can film. Try the brainstorm prompt in Lesson 1, then change the idea until it feels like yours.</p></div>
+    <div class="qa" data-k="people school friend victim"><p class="q">Can I put a classmate or a teacher in my story?</p><p>Not as a character or a joke. No real people from school, no classmate as the victim. A classmate can lend their voice or help you film, and then they go in the credits.</p></div>
+    <div class="qa" data-k="orkeny egyperces bonus challenge hungarian"><p class="q">Do I have to do the Örkény challenge?</p><p>No, it's a bonus. If you like strange short stories, read a few egyperces on MEK and adapt one. Use your own words in the video and credit him at the end: "Based on Örkény István: [title]". There's an award for the best one at the Premiere.</p></div>
+    <div class="qa" data-k="length seconds duration time limit"><p class="q">How long should my video be?</p><p>30–60 seconds, end card included. Basic: 30–45 s. Advanced and Pro: 45–60 s. Shorter and tight beats longer and slow.</p></div>
+  </div>
+  <h3>Accounts and files</h3>
+  <div class="faq">
+    <div class="qa" data-k="login password account under 13 parent"><p class="q">I don&#x27;t have a Roblox account, or I forgot my password.</p><p>You need an account to log in to Roblox Studio. If you're under 13, a parent or guardian has to agree to the account. Tell me at the start of Lesson 1, not in the middle of Lesson 4. Forgotten password: use the email recovery, which is why it's worth adding an email to your account.</p></div>
+    <div class="qa" data-k="practice place download rbxl tutorial open"><p class="q">Where do I get the practice place?</p><p>It's attached to the assignment in Classroom: InThisTown_Tutorial.rbxl. Download it, then open it from Roblox Studio with File → Open from File.</p></div>
+    <div class="qa" data-k="copy paste prop explorer serverstorage setkit two windows"><p class="q">How do I copy something from the practice place into my own place?</p><p>Open both files in Studio: they open in two separate windows. In the practice place, find the thing in the Explorer (props are in ServerStorage → SetKit), click it and press Cmd + C. Switch to your own window, click Workspace in its Explorer and press Cmd + V. Check the window title so you know which file you're in.</p></div>
+    <div class="qa" data-k="save drive folder versions backup lost"><p class="q">Where should I save my files?</p><p>Your Studio file: a folder called In This Town, with a new version number every lesson (name_inthistown_v3.rbxl). Your clips: a folder called In This Town clips. Copy both to your Google Drive at the end of each lesson, so a crash or a different computer doesn't cost you your work.</p></div>
+    <div class="qa" data-k="crash autosave recovery lost work"><p class="q">Studio crashed and my work is gone.</p><p>Open your last numbered version. When Studio restarts after a crash it usually offers to recover your work: say yes. Then save more often: Cmd + S every time you finish something.</p></div>
+  </div>
+  <h3>Building</h3>
+  <div class="faq">
+    <div class="qa" data-k="toolbox map town model free models"><p class="q">Can I use a whole ready-made town from the Toolbox?</p><p>A few props from the Toolbox are fine. A whole finished map isn't: the set is part of your work and part of your mark. Build the places your shots need, and use the prop shop for the small things.</p></div>
+    <div class="qa" data-k="anchored falls apart physics"><p class="q">Things fall apart or fall over when I press Play.</p><p>Tick Anchored on every piece. For a whole model: select it, then tick Anchored in the Properties window, and it applies to every part inside.</p></div>
+  </div>
+  <h3>Actors</h3>
+  <div class="faq">
+    <div class="qa" data-k="avatar look clothes rig builder body colors character costume"><p class="q">Can I change how my actor looks?</p><p>Yes. Your own avatar is the easiest actor. For other characters: Avatar tab → Rig Builder makes a plain character, then change its colours with Body Colors in the Explorer, or copy clothes from the Toolbox. Different colours are often enough to tell two characters apart.</p></div>
+    <div class="qa" data-k="two actors players characters multiplayer clients servers"><p class="q">How do I get two characters in one scene when I&#x27;m the only player?</p><p>Two ways. Easy: copy your avatar (copy while playing, paste after stopping) as many times as you need; anchored copies stand still while you play the moving one. Fun: Test tab → Clients and Servers → choose 2 players → Start. Two game windows open; you control one character in each, and film from either.</p></div>
+    <div class="qa" data-k="animation editor play mode not playing publish"><p class="q">My animation plays in the Animation Editor but not when I press Play.</p><p>That's normal. An animation from the editor only plays in the game if it's published to Roblox and started by a script (that's the Pro level). For Basic and Advanced, record the animation straight from the editor: place the Studio camera, start recording, press Space. Reference B has the details.</p></div>
+    <div class="qa" data-k="pose reset humanoid stands up"><p class="q">My actor&#x27;s pose resets when I press Play.</p><p>The Humanoid stands characters back up. If the actor only needs to stand still in a pose, delete its Humanoid and anchor all its parts. If it needs to move, use the Animation Editor and record from the editor.</p></div>
+    <div class="qa" data-k="sit seat bench"><p class="q">How do I make my character sit?</p><p>Put a Seat in your set (the prop shop bench has one). Walk onto it while playing and your character sits. To make a copied actor sit without playing, pose it in the Animation Editor.</p></div>
+  </div>
+  <h3>Filming</h3>
+  <div class="faq">
+    <div class="qa" data-k="freecam free camera shift p not working"><p class="q">The free camera won&#x27;t start.</p><p>It only works while the game is playing, and only with the left Shift: Left Shift + P. If nothing happens, click inside the game view first so it has the keyboard.</p></div>
+    <div class="qa" data-k="sound audio silent recording mac"><p class="q">Why is there no sound in my recording?</p><p>A Mac screen recording doesn't record the game's sound. That's expected. Pick your sounds at Station 6, write them in your shot list, and add them in your video editor.</p></div>
+    <div class="qa" data-k="recording file saved desktop find clip"><p class="q">Where did my recording go?</p><p>Wherever Cmd + Shift + 5 → Options → Save to is set. Usually the Desktop. Set it to your In This Town clips folder, and rename each clip straight away: shot_03_take2.mov.</p></div>
+    <div class="qa" data-k="upright vertical landscape 9:16 crop canva"><p class="q">My video is upright but my actor is off to the side.</p><p>You recorded wide and the editor cropped it to 9:16. Either keep your actor in the middle third of the frame while filming, or make your video wide (landscape) instead. Pick one for the whole film.</p></div>
+    <div class="qa" data-k="phone camera record screen"><p class="q">Can I record with my phone?</p><p>No: a phone filming the screen looks blurry and shaky. Use Cmd + Shift + 5 on the computer.</p></div>
+  </div>
+  <h3>Sound and voice</h3>
+  <div class="faq">
+    <div class="qa" data-k="music song copyright library"><p class="q">Can I use a song I like?</p><p>Not a famous song: it can get your video muted or taken down, and it isn't yours. Use the music library in Canva or iMovie, or the free audio in Roblox's Creator Store. Keep music quieter than any voice.</p></div>
+    <div class="qa" data-k="ai voice tts text to speech narrator"><p class="q">Can I use an AI voice for the narrator?</p><p>Yes, a generic text-to-speech voice is fine, and it's part of the trend's look. Never a voice that copies a real person. Write in your diary which tool you used.</p></div>
+    <div class="qa" data-k="ai music sound effects generated"><p class="q">Can I use AI-generated music or sound effects?</p><p>Yes, if the tool lets you use what it makes, and you write it in your diary. Sound libraries in your editor are usually quicker.</p></div>
+    <div class="qa" data-k="language english hungarian magyar"><p class="q">English or Hungarian?</p><p>English is preferred, Hungarian is fine too. Whatever the language, captions are required.</p></div>
+  </div>
+  <h3>AI</h3>
+  <div class="faq">
+    <div class="qa" data-k="ai cheating allowed rule chatgpt gemini"><p class="q">Is using AI cheating?</p><p>Not if AI helps and you direct. Asking for rule ideas, explanations, a script you then understand, or help fixing an error is fine. Making the whole video with AI, or pasting code you can't explain, isn't. Every AI use goes in your diary: what you asked and what you changed.</p></div>
+    <div class="qa" data-k="chatgpt gemini assistant age which tool"><p class="q">Which AI can I use?</p><p>Gemini on your school account, ChatGPT, and the Roblox Assistant inside Studio. If the Assistant button isn't there on your account, use one of the others.</p></div>
+    <div class="qa" data-k="code script paste safe check"><p class="q">The AI gave me code. How do I know it&#x27;s safe to paste?</p><p>Read the checklist in Reference G. In short: you know where it goes, you can say what each part does, it doesn't ask for anything strange (like require() with a number, or getting data from the internet), and you saved a version first.</p></div>
+  </div>
+  <h3>Hand-in and marks</h3>
+  <div class="faq">
+    <div class="qa" data-k="pair partner friend team create group"><p class="q">Can I work with a friend?</p><p>In grade 6 you can work in pairs. You share one Story Doc, but each of you writes your own diary lines every lesson, with your name. Pairs work on one computer or pass the file. From grade 7 up, everyone makes their own film, though a classmate can lend a voice or help you film.</p></div>
+    <div class="qa" data-k="marks grade rubric assessment"><p class="q">Do I get marked on how good it looks or on the idea?</p><p>Both, plus how you worked. Four parts: it works, thinking (the story), craft (set, shots, edit) and process (Story Doc and diary). What matters most is that you try, finish something and can say how you made it. A simple-looking film with a great rule and an honest diary can get a 5.</p></div>
+    <div class="qa" data-k="level basic advanced pro"><p class="q">Can I pick a higher level?</p><p>Yes, any time. And if your level feels like too much, for example Pro without any coding experience, talk to me and we pick the one that fits.</p></div>
+    <div class="qa" data-k="post tiktok youtube share publish"><p class="q">Can I post my video on TikTok or YouTube?</p><p>We show every film at the Premiere. Posting it anywhere else is up to you and your parents, and never with a classmate's voice or name in it without their OK.</p></div>
+    <div class="qa" data-k="absent missed lesson catch up sick"><p class="q">I missed a lesson. What do I do?</p><p>Read that lesson's Read First box, look at your Story Doc, and do the most important step: the story before the set, the set before filming. Write a diary entry anyway, saying what you caught up on.</p></div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  const sel = '.page p, .page li, .page tr, .page .qa, .page h3, .page figcaption';
+  const items = [];
+  document.querySelectorAll(sel).forEach(el => {
+    if (el.closest('.qa') && !el.matches('.qa')) return;          // FAQ answers indexed as one item
+    if (el.closest('tr') && !el.matches('tr')) return;
+    const sec = el.closest('section');
+    const head = sec ? (sec.querySelector('h2')||{}).textContent : 'Start';
+    const raw = el.matches('tr') ? [...el.children].map(c => c.textContent).join(' · ') : (el.innerText || el.textContent);
+    const text = raw.replace(/\s+/g,' ').trim();
+    if (text.length < 4) return;
+    const extra = el.dataset.k || '';
+    const isQ = el.matches('.qa');
+    const k = sec && sec.querySelector('small,.kicker');
+    const qt = isQ ? el.querySelector('.q').textContent : '';
+    items.push({el, head: isQ ? 'Question' : (k ? k.textContent + ': ' : '') + head,
+      title: qt, text: isQ ? text.slice(qt.length).trim() : text, hay: (text + ' ' + extra).toLowerCase(), isQ});
+  });
+  const fold = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  items.forEach(i => i.hay = fold(i.hay));
+  const q = document.getElementById('q'), box = document.getElementById('results');
+  let shown = [], cur = -1;
+  function esc(s){ return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+  function snippet(t, words){
+    const ft = fold(t); let pos = -1;
+    for (const w of words){ const m = (w.length <= 3 ? new RegExp('\\b' + w + '\\b') : null); pos = m ? ((m.exec(ft)||{index:-1}).index) : ft.indexOf(w); if (pos >= 0) break; }
+    let start = Math.max(0, pos - 50), s = t.slice(start, start + 170);
+    s = (start > 0 ? '…' : '') + esc(s) + (start + 170 < t.length ? '…' : '');
+    for (const w of words){ if (w.length < 2) continue;
+      const e = w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+      s = s.replace(new RegExp(w.length <= 3 ? '\\b(' + e + ')\\b' : '(' + e + ')', 'ig'), '<mark>$1</mark>'); }
+    return s;
+  }
+  function run(){
+    const words = fold(q.value).split(/\s+/).filter(w => w.length > 1).map(w => w.length > 4 && w.endsWith('s') ? w.slice(0,-1) : w);
+    if (!words.length){ box.hidden = true; return; }
+    shown = items.map(i => {
+      let score = 0;
+      for (const w of words){
+        if (w.length <= 3){ if (new RegExp('\\b' + w + '\\b').test(i.hay)) score += 2.2; }
+        else if (i.hay.includes(w)) score += 2 + (i.hay.split(w).length - 2) * 0.2; }
+      if (score && i.isQ) score += 1.5;
+      if (score && fold(i.text).includes(words.join(' '))) score += 2;
+      return {i, score};
+    }).filter(r => r.score >= 2 * words.length * 0.99 || (words.length > 2 && r.score >= 4))
+      .sort((a,b) => b.score - a.score).slice(0, 10);
+    cur = -1;
+    box.innerHTML = shown.length ? shown.map((r,n) =>
+      `<a href="#" data-n="${n}"><div class="sec">${esc(r.i.head)}</div>${r.i.title ? '<div class="qt">' + snippet(r.i.title, words) + '</div>' : ''}<div class="snip">${snippet(r.i.text, words)}</div></a>`).join('')
+      : '<div class="none">Nothing found. Try another word, or look at the Questions at the end.</div>';
+    box.hidden = false;
+  }
+  function go(n){
+    const el = shown[n].i.el; box.hidden = true;
+    el.scrollIntoView({behavior:'smooth', block:'center'});
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+  }
+  q.addEventListener('input', run);
+  q.addEventListener('focus', () => { if (q.value) run(); });
+  box.addEventListener('mousedown', e => { const a = e.target.closest('a'); if (a){ e.preventDefault(); go(+a.dataset.n); } });
+  q.addEventListener('keydown', e => {
+    const links = box.querySelectorAll('a');
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){ e.preventDefault();
+      cur = Math.max(0, Math.min(links.length - 1, cur + (e.key === 'ArrowDown' ? 1 : -1)));
+      links.forEach((l,n) => l.classList.toggle('sel', n === cur)); }
+    if (e.key === 'Enter' && shown.length){ go(cur < 0 ? 0 : cur); }
+    if (e.key === 'Escape'){ box.hidden = true; }
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('.searchwrap')) box.hidden = true; });
+  if (location.hash.startsWith('#q=')){ q.value = decodeURIComponent(location.hash.slice(3)); run(); }
+  document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== q){ e.preventDefault(); q.focus(); } });
+})();
+</script>
+</body>
+</html>
